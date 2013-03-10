@@ -1,0 +1,159 @@
+	<h1> Tutlage Playground - In Browser Code Editor </h1>
+
+	<p> Tutlage Playground is an online in browser code editor quite similar to JsFiddle and JsBin.
+	My idea is not to compete them as they already great in themselves, tutlage playground an open source approach where you download the source files and
+	create your own snippets community using <strong>Tutlage Playground</strong>.
+	</p>
+
+	<p> <strong>Version 1.0</strong> is an standalone version which means you have all the flexibility to integrate it with your
+	existing website or blog. It makes use of Php ( 70% or greater ) and Jquery ( 30% of lesser ) to setup a working
+	in browser code editor. </p>
+
+	<h2> Functionality </h2>
+	<p> Currently it supports web standard languages which includes <strong>Html,Css</strong> and <strong>Javascript libraries</strong></p>
+
+	<h4> In-built Js Libraries </h4>
+	<ol>
+		<li>Plain Javascript</li>
+		<li>Jquery</li>
+		<li>MooTools</li>
+		<li>Prototype</li>
+		<li>YUI3.6</li>
+		<li>Dojo</li>
+		<li>ExtJs</li>
+	</ol>
+
+	<p> Above are the default libraries which are supported by tutlage playground, you can add more libraries just my adding couple of more 
+	lines inside config file.</p>
+
+	<h4> Adding More Js Libraries </h4>
+	<p> In order to add more js libraries on config.php file and follow the below instructions.</p>
+
+	<ol>
+		<li> <strong>Adding Library Display Name</strong>
+			<p>
+				Add new library display name inside the following array
+			</p>
+			<pre class="brush:php">
+				$js_array = array(
+					'Plain Javascript',
+					'Jquery',
+					'MooTools',
+					'Prototype',
+					'YUI3.6',
+					'Dojo',
+					'ExtJs',
+					'Your New Library Display Name'
+				);
+			</pre>
+		</li>
+
+		<li> <strong>Adding Library Source File </strong>
+			<p> 
+				Adding new library source file is as easy as adding the display name, just edit the below array as instructed
+			</p>
+			<pre class="brush:php">
+				$js_libs = array(
+					'Plain Javascript' => '',
+					'Jquery' => '<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>',
+					'MooTools' => '<script src="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>',
+					'Prototype' => '<script src="//ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>',
+					'YUI3.6' => '<script src="http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>',
+					'Dojo' => '<script src="//ajax.googleapis.com/ajax/libs/dojo/1.8.0/dojo/dojo.js"></script>',
+					'ExtJs' => '<script src="//ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core.js"></script>',
+					'Your New Library Display Name' => 'New Library Src Url'
+				);
+			</pre>
+		</li>
+
+		<li> <strong>Adding Library OnLoad Function </strong>
+			<p> 
+				Almost all jquery libraries have their onload or ondomready functions, which needs to defined under the following array
+			</p>
+			<pre class="brush:php">
+				$js_onReadyFunctions = array(
+					'Plain Javascript' => '** CODE **',
+					'Jquery' => "$(function(){** CODE **})",
+					'MooTools' => "window.addEvent('domready', function() {** CODE **})",
+					'Prototype' => "document.observe('dom:loaded', function() {** CODE **})",
+					'YUI3.6' => 'YUI().use("node", function(Y){ Y.on("domready", function(){** CODE **});})',
+					'Dojo' => "dojo.addOnLoad(function(){** CODE **})",
+					'ExtJs' => "Ext.onReady(function(){** CODE **})",
+					'Your New Library Display Name' => 'New Library Dom Ready Function{** CODE **}'
+				);
+			</pre>
+		</li>
+	</ol>
+
+	<p> That all is required in order to add new library to tutlage playground, apart from all this it do support
+	external file includes for css and js only files with handy keyword shortcuts to save mouse moving time.</p>
+
+	<h4> Keyboard Shorcuts </h4>
+
+	<ol>
+		<li> <strong>Run Code </strong>
+			<p> <i> CTRL + S </i></p>
+		</li>
+		<li> <strong>Download Code </strong>
+			<p> <i> ALT + D </i></p>
+		</li>
+		<li> <strong>Reset Playground </strong>
+			<p> <i> ALT + R </i></p>
+		</li>
+		<li> <strong>Add External Resources </strong>
+			<p> <i> ALT + A </i></p>
+		</li>
+	</ol>
+
+	<h4> FullScreen Support ( Beta ) And Comments </h4>
+	<p> Fullscreen support will toggle the output area to cover the entire width and height of the screen and user can also leave comments which
+	will be appended to the top of the actual file which they will download later.</p>
+
+	<h2> Getting Playground Values </h2>
+
+	<p> With all that done to functionality , the key part is the accessibility of the values. Lot of you would be
+	incorporating it to your existing site or blog. That is why i decided to store all the configration values and 
+	code values inside <strong>sessions</strong>. Which will let you access them anywhere on your server without 
+	including any dependency files.</p>
+
+	<pre class="brush:php">
+		$_SESSION['mashed_code'];  // Complete marked up code
+		$_SESSION['js_library'];	// Js Library Source File Url
+		$_SESSION['external_libraries']; // List of all included external files ( Will be rendered with the file code )
+		$_SESSION['playground_js'];		// Js code written by the end user
+		$_SESSION['playground_css'];	// Css code written by the end user
+		$_SESSION['playground_html'];	// Html code written by the end user
+		$_SESSION['playground_comments'];	// Comments left by the end user
+		$_SESSION['selected_js_lib'];	//	Select Js library display name
+		$_SESSION['existing_external_libs'];	// List of all included external files ( Will be shown to the user under add files dialog box )
+		$_SESSION['external_libs_count'];	// Number of external files included
+		$_SESSION['active_tab'];	// Active tab the user was working with
+		$_SESSION['js_default_position'];	// Default position to load the js code ( Can be inside head OR before body closing tags )
+	</pre>
+
+	<h2> Setting Playground Values </h2>
+	<p> Setting values is as easier as getting values, all you need to take care of is that they are in the right format which you test by 
+	doing an echo on above sessions.</p>
+
+	<pre class="brush:php">
+		// It will set the html of the playground to an heading tag with hello world phrase
+		$_SESSION['playground_html'] = '&lt;h2&gt; hello world &lt;/h2&gt;'; 
+	</pre>
+
+	<p> As shown above you can set the value of any session on the page load time and it will be reflected automatically.</p>
+
+	<h2> Requirements </h2>
+	<ol>
+		<li> Php5 Or Greater </li>
+		<li> Javascript Enabled Browser </li>
+	</ol>
+
+	<h2> Configration </h2>
+	<ol>
+		<li> Do not delete <strong>axjQMP</strong> and <strong>downloads</strong> folder , they are required to manage temporary files. <strong>! important</strong> </li>
+		<li> List of supported <strong>Js libraries </strong> like Jquery, Mootools, Prototype is under <strong>config.php</strong> file, you can easily add or remove libraries.</li>
+	</ol>
+
+	<h2> What's Next</h2>
+	<p>As <strong>tutlage playground</strong> is tested by couple of team members it will be hard for us to find real time challanges. Any bugs,advice and suggestions will be appreciated, you 
+	can contact the <a href="http://thetutlage.wufoo.com/forms/contact-support/" target="_blank"> support team here </a></p>

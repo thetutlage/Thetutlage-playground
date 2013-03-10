@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Not Supported Browser</title>
+	<style type="text/css">
+		body {
+			background: #222;
+			font-family: Arial;
+			margin: 0;
+			padding: 0;
+		}
+		#wrapper {
+			margin: 0 auto;
+			overflow: hidden;
+			position: relative;
+			width: 557px;
+			text-align: center;
+			padding-top: 50px;
+		}
+		#wrapper .tagline{
+			color: white;
+			font-family: Arial;
+			font-size: 16px;
+			line-height: 22px;
+			margin: 27px 0 0;
+			text-shadow: 0 1px 0 #2C2D2E;
+		}
+		.ie{
+			text-align: center;
+		}
+		#wrapper .box {
+			background-color: #2E2E30;
+			border-radius: 15px 15px 15px 15px;
+			-o-border-radius: 15px 15px 15px 15px;
+			-webkit-border-radius: 15px 15px 15px 15px;
+			-moz-border-radius: 15px 15px 15px 15px;
+			box-shadow: 0 1px 0 #46474A;
+			-webkit-box-shadow: 0 1px 0 #46474A;
+			-o-box-shadow: 0 1px 0 #46474A;
+			-moz-box-shadow: 0 1px 0 #46474A;
+			height: 146px;
+			margin: 27px 0 2px;
+			overflow: hidden;
+			position: relative;
+		}
+		#wrapper .box .browser-box.firefox {
+			background-image: url("images/firefox.png");
+			left: 65px;
+			padding-top: 92px;
+			top: 18px;
+		}
+		#wrapper .box .browser-box.chrome {
+			background-image: url("images/chrome.png");
+			left: 234px;
+			padding-top: 94px;
+			top: 16px;
+		}
+		#wrapper .box .browser-box.safari {
+			background-image: url("images/safari.png");
+			left: 396px;
+			padding-top: 96px;
+			top: 14px;
+		}
+		#wrapper .box .browser-box {
+			background-position: 0 0;
+			background-repeat: no-repeat;
+			color: #EEEEEE;
+			font-family: Arial;
+			font-size: 14px;
+			font-weight: bold;
+			height: 46px;
+			position: absolute;
+			text-align: center;
+			text-decoration: none;
+			width: 95px;
+		}
+	</style>
+</head>
+<body>
+		<div id="wrapper">
+			<div class="goose">
+				<h2> <img src="images/goose.png" alt="goose!" /></h2>
+				<div class="tagline">
+					<p> Playground is not for geeks from 1970, we developed it using emerging technologies and 
+					it deserve something better than <div class="ie"><img src="images/ie.png" /></div></p>
+				</div>
+			</div>
+			
+				<div class="tagline">
+					<p> Try one of these mordern browsers </p>
+				</div>
+			<div class="box">
+
+				<a href="http://www.firefox.com" target="_blank">
+					<div class="browser-box firefox">
+						FireFox
+					</div>
+				</a>
+				<a href="http://www.google.com/chrome/" target="_blank">
+					<div class="browser-box chrome">
+						Chrome
+					</div>
+				</a>
+				<a href="http://www.apple.com/safari/" target="_blank">
+					<div class="browser-box safari">
+						Safari
+					</div>
+				</a>
+			</div>
+		</div><!-- end wrapper -->
+</body>
+</html>
