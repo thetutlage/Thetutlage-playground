@@ -15,6 +15,13 @@ Js libraries as you want.
 
 Check out latest demo http://www.thetutlage.com/demo/playground
 
+Author URI
+
+http://www.thetutlage.com
+
+
 -- License --
 
 In plain words you are free to download, share and use this script without buying any license. Though it is under MIT license.
+
+
